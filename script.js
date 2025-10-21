@@ -117,10 +117,18 @@ function checkAnswer(selectedAnswer, button) {
 }
 
 // Initialize the quiz
-document.addEventListener('DOMContentLoaded', function() {
+function initQuiz() {
     generateQuestion();
 
     document.getElementById('next-btn').addEventListener('click', () => {
         generateQuestion();
     });
-});
+}
+
+// Run init when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initQuiz);
+} else {
+    // DOM is already ready, run immediately
+    initQuiz();
+}
